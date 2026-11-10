@@ -541,6 +541,11 @@ add_blender_test(
 # MODELING TESTS
 # ------------------------------------------------------------------------------
 
+add_blender_test(
+  uv_lightmap_pack
+  --python ${CMAKE_CURRENT_LIST_DIR}/bl_uv_lightmap_pack.py
+)
+
 if(TEST_SRC_DIR_EXISTS)
   add_blender_test(
     bmesh_bevel

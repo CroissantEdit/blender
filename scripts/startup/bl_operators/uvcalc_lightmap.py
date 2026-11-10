@@ -565,12 +565,12 @@ def unwrap(operator, context, **kwargs):
     else:
         objects = context.selected_objects
 
-    # define list of meshes
-    meshes = list({
+    # Remove duplicate meshes while preserving their order for reproducible packing.
+    meshes = list(dict.fromkeys(
         me for obj in objects
         if obj.type == 'MESH'
         if (me := obj.data).polygons and me.is_editable
-    })
+    ))
 
     if not meshes:
         operator.report({'ERROR'}, "No mesh object")
